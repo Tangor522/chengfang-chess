@@ -1,0 +1,98 @@
+.board-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.board {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(135deg, #DEB887 0%, #D2B48C 100%);
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.board-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.intersection {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.intersection-dot {
+  width: 8px;
+  height: 8px;
+  background: #8B4513;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.intersection.movable {
+  background: rgba(76, 175, 80, 0.3);
+}
+
+.intersection.movable:hover {
+  background: rgba(76, 175, 80, 0.5);
+}
+
+.intersection.selected {
+  background: rgba(33, 150, 243, 0.3);
+}
+
+.piece {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  position: relative;
+  z-index: 10;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.piece.black {
+  background: radial-gradient(circle at 30% 30%, #4a4a4a, #1a1a1a);
+  border: 2px solid #000;
+}
+
+.piece.white {
+  background: radial-gradient(circle at 30% 30%, #ffffff, #e0e0e0);
+  border: 2px solid #ccc;
+}
+
+.piece:hover {
+  transform: scale(1.1);
+}
+
+.piece.eatable {
+  animation: pulse 0.8s infinite;
+  cursor: pointer;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(244, 67, 54, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(244, 67, 54, 0);
+  }
+}
+
+.intersection.selected .piece {
+  box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.5), 0 2px 8px rgba(0, 0, 0, 0.4);
+}
