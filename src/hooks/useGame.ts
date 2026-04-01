@@ -81,13 +81,13 @@ export function useGame() {
       };
     }
 
-    // 检查对方是否被堵住
-    if (currentState.phase === 'moving' && isBlocked(currentState.board, opponent)) {
+    // 检查当前玩家是否无法移动（和棋）
+    if (currentState.phase === 'moving' && isBlocked(currentState.board, currentState.currentPlayer)) {
       return {
         ...currentState,
         phase: 'ended',
         winner: 'draw',
-        message: '和棋！（对方无法移动）',
+        message: '和棋！（无法移动）',
       };
     }
 
